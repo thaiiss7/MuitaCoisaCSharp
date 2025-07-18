@@ -17,9 +17,12 @@ builder.Services.AddDbContext<MuitasCoisasDbContext>(
 
 builder.Services.AddTransient<IDivaRepository, MockDivaRepository>();
 
+builder.Services.AddTransient<IDayRepository, EFDayRepository>();
+
 var app = builder.Build();
 
 // app.MapControllers();
 app.ConfigureDivaEndpoints();
+app.ConfigureDayEndpoints();
 
 app.Run();
