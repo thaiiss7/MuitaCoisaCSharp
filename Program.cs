@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MuitaCoisaCSharp.Endpoints;
 using MuitaCoisaCSharp.Implementations;
 using MuitaCoisaCSharp.Models;
 using MuitaCoisaCSharp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// builder.Services.AddControllers();
 
 builder.Services.AddDbContext<MuitasCoisasDbContext>(
     options => options.UseSqlServer(
@@ -16,6 +19,7 @@ builder.Services.AddTransient<IDivaRepository, MockDivaRepository>();
 
 var app = builder.Build();
 
-app.MapControllers();
+// app.MapControllers();
+app.ConfigureDivaEndpoints();
 
 app.Run();
